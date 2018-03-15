@@ -34,5 +34,6 @@ for result in soup.find_all("h3", class_="r"):
   driver.get(clean_url)
   screenshot = driver.save_screenshot('C:\\Users\\000\\Desktop\\test0315\\' + str(i) + '.png')
   i = i + 1
-  
+
+driver.quit()
 workbook.close()
