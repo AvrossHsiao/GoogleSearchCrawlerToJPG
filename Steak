@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import xlsxwriter as xw
 
-workbook = xw.Workbook('C:\\Users\\000\\Desktop\\excel.xlsx')
+workbook = xw.Workbook('C:\\Users\\000\\Desktop\\test0315\\excel.xlsx')
 worksheet = workbook.add_worksheet()
 bold = workbook.add_format({'bold': True})
 worksheet.write('A1', 'Search Result', bold)
@@ -32,7 +32,7 @@ for result in soup.find_all("h3", class_="r"):
   row = row + 1
   
   driver.get(clean_url)
-  screenshot = driver.save_screenshot('C:\\Users\\yth\\Desktop\\test0315\\' + str(i) + '.png')
+  screenshot = driver.save_screenshot('C:\\Users\\000\\Desktop\\test0315\\' + str(i) + '.png')
   i = i + 1
   
 workbook.close()
