@@ -26,8 +26,9 @@ col = 0
 for result in soup.find_all("h3", class_="r"):
   title = result.find("a").text
   url = result.find("a").get("href")
+  clean_url = url.split("q=")[1].split("&sa")[0]
   worksheet.write(row, col, title)
-  worksheet.write(row, col + 1, url)
+  worksheet.write(row, col + 1, clean_url)
   row = row + 1
   
 workbook.close()
