@@ -1,5 +1,5 @@
-# GoogleSearchCrawlerToJPG
-Scrape urls from google search and export them to JPGs.
+# GoogleSearchCrawlerToPNG
+Scrape urls from google search and export them to PNGs.
 
 Running on Windows.
 
