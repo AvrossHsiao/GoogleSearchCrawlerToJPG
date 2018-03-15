@@ -23,6 +23,7 @@ soup = BeautifulSoup(r.content, "html.parser")
 
 row = 1
 col = 0
+i = 1
 for result in soup.find_all("h3", class_="r"):
   title = result.find("a").text
   url = result.find("a").get("href")
@@ -30,5 +31,9 @@ for result in soup.find_all("h3", class_="r"):
   worksheet.write(row, col, title)
   worksheet.write(row, col + 1, clean_url)
   row = row + 1
+  
+  imgkit.from_url(clean_url, 'C:\\Users\\000\\Desktop\\' + str(i) + '.jpg')
+  i = i + 1
+  
   
 workbook.close()
