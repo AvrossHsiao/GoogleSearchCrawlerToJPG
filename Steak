@@ -1,0 +1,33 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from bs4 import BeautifulSoup
+import requests
+import xlsxwriter as xw
+import imgkit
+
+workbook = xw.Workbook('C:\\Users\\000\\Desktop\\excel.xlsx')
+worksheet = workbook.add_worksheet()
+bold = workbook.add_format({'bold': True})
+worksheet.write('A1', 'Search Result', bold)
+worksheet.write('B1', 'URL', bold)
+
+driver = webdriver.Chrome()
+driver.get("http://google.com")
+elem = driver.find_element_by_name("q")
+elem.clear()
+elem.send_keys("g0v")
+elem.send_keys(Keys.ENTER)
+hl_url = driver.current_url
+r = requests.get(hl_url)
+soup = BeautifulSoup(r.content, "html.parser")
+
+row = 1
+col = 0
+for result in soup.find_all("h3", class_="r"):
+  title = result.find("a").text
+  url = result.find("a").get("href")
+  worksheet.write(row, col, title)
+  worksheet.write(row, col + 1, url)
+  row = row + 1
+  
+workbook.close()
